@@ -1,0 +1,171 @@
+webpackHotUpdate("main",{
+
+/***/ "./src/Container/ProductCard.js":
+/*!**************************************!*\
+  !*** ./src/Container/ProductCard.js ***!
+  \**************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _Components_Card__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Components/Card */ "./src/Components/Card.js");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _Style_style_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../Style/style.css */ "./src/Style/style.css");
+/* harmony import */ var _Style_style_css__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_Style_style_css__WEBPACK_IMPORTED_MODULE_4__);
+var _jsxFileName = "C:\\Code\\ecommercewebsite\\src\\Container\\ProductCard.js";
+
+
+
+
+
+
+class ProductCard extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
+  constructor() {
+    super();
+
+    this.getdata = id => {
+      let newdataarray = [];
+      let data = [...this.props.carddata];
+      newdataarray = data.slice(id, id + 20);
+      let renderarray = [...this.state.dataarray].concat(newdataarray);
+      this.setState({
+        dataarray: renderarray
+      });
+    };
+
+    this.state = {
+      dataarray: [],
+      loading: false,
+      page: 0,
+      prevY: 0
+    };
+  }
+
+  componentDidMount() {
+    this.setState({
+      dataarray: this.props.carddata
+    });
+    this.getdata(0);
+    var options = {
+      root: null,
+      rootMargin: "0px",
+      threshold: 1.0
+    };
+    this.observer = new IntersectionObserver(this.handleObserver.bind(this), options);
+    this.observer.observe(this.loadingRef);
+  }
+
+  handleObserver(entities, observer) {
+    const y = entities[0].boundingClientRect.y;
+
+    if (this.state.prevY > y) {
+      const lastindex = this.state.dataarray.length;
+      this.getdata(lastindex);
+    }
+
+    this.setState({
+      prevY: y
+    });
+  }
+
+  render() {
+    //Additional css
+    const loadingCSS = {
+      height: "100px",
+      margin: "30px"
+    }; //To change the loading icon behavious
+
+    const loadingTextCSS = {
+      display: this.state.loading ? "block" : "none"
+    };
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "container",
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 63,
+        columnNumber: 13
+      }
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      style: {
+        minHeight: "800px"
+      },
+      class: classnames__WEBPACK_IMPORTED_MODULE_3___default()("row", "content"),
+      style: {
+        paddingTop: "50px"
+      },
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 64,
+        columnNumber: 17
+      }
+    }, Object(lodash__WEBPACK_IMPORTED_MODULE_2__["map"])(this.state.dataarray, (data, index) => {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        class: "col-md-4",
+        style: {
+          paddingTop: "16px",
+          paddingBottom: "16px"
+        },
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 67,
+          columnNumber: 36
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Components_Card__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        id: data.id,
+        image: data.image,
+        product: data.product,
+        description: data.description,
+        price: data.price,
+        currency: data.currency,
+        full_description: data.full_description,
+        additional_image: data.additional_image,
+        brand: data.brand,
+        jew_size: data.jew_size,
+        avlble: data.avlble,
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 68,
+          columnNumber: 33
+        }
+      }));
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      ref: loadingRef => this.loadingRef = loadingRef,
+      style: loadingCSS,
+      style: {
+        color: "red"
+      },
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 84,
+        columnNumber: 21
+      }
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+      style: loadingTextCSS,
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 89,
+        columnNumber: 25
+      }
+    }, "Loading..."))));
+  }
+
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (ProductCard);
+
+/***/ })
+
+})
+//# sourceMappingURL=main.d14d98805743fb98c211.hot-update.js.map
