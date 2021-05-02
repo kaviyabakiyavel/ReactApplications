@@ -1,1 +1,1 @@
-# ReactES6
+# React Applications
