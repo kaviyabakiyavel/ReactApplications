@@ -1,2 +1,0 @@
-# Gameapp
-Game application
